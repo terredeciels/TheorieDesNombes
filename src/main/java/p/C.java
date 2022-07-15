@@ -11,7 +11,7 @@ public class C {
         int i = 100;
         System.out.println("Div: " + i);
         Vector<Integer> Div = div(i);
-        printDiv(Div);
+        // printDiv(Div);
         System.out.println();
 
         int a = 98, b = 56;
@@ -35,15 +35,15 @@ public class C {
         return a > b ? gcd(a - b, b) : gcd(a, b - a);
     }
 
-    Vector<Integer> div(int n) {
+    Vector<Integer> div2(int n) {
         Vector<Integer> v = new Vector<>();
         rangeClosed(1, (int) sqrt(n))
                 .filter(i -> n % i == 0)
                 .forEach(i -> {
-                            if (n / i == i)
+                            if (n / i == i) {
+                                System.out.print("*");
                                 System.out.printf("%d ", i);
-                            
-                            else {
+                            } else {
                                 System.out.printf("%d ", i);
                                 v.add(n / i);
                             }
@@ -51,6 +51,42 @@ public class C {
                 );
         return v;
     }
+
+    Vector<Integer> div1(int n) {
+        Vector<Integer> v = new Vector<>();
+        rangeClosed(1, (int) sqrt(n))
+                .filter(i -> n % i == 0)
+                .forEach(i -> {
+                            if (n / i == i) {
+                                System.out.print("*");
+                                System.out.printf("%d ", i);
+                            } else {
+                                System.out.printf("%d ", i);
+                                v.add(n / i);
+                            }
+                        }
+                );
+        return v;
+    }
+
+    // method to print the divisors
+    Vector<Integer> div(int n) {
+        Vector<Integer> v = new Vector<>();
+        // Note that this loop runs till square root
+        for (int i = 1; i <= sqrt(n); i++) {
+            if (n % i == 0) {
+                // If divisors are equal, print only one
+                if (n / i == i) {
+                    System.out.print("*");
+                    System.out.print(" " + i);
+                } else // Otherwise print both
+                    System.out.print(i + " " + n / i + " ");
+
+            }
+        }
+        return v;
+    }
+
 
     int d(int n) {
         final int[] cnt = {0};
