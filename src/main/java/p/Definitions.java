@@ -5,24 +5,24 @@ import java.util.Vector;
 import static java.lang.Math.sqrt;
 import static java.util.stream.IntStream.rangeClosed;
 
-public class C {
+public class Definitions {
 
-    C() {
+    Definitions() {
         int i = 100;
         System.out.println("Div: " + i);
         Vector<Integer> Div = div(i);
         // printDiv(Div);
         System.out.println();
 
-        int a = 98, b = 56;
-        System.out.println("GCD of " + a + " and " + b + " is " + gcd(a, b));
+//        int a = 98, b = 56;
+//        System.out.println("GCD of " + a + " and " + b + " is " + gcd(a, b));
 
         System.out.println("d(" + i + ") = "
                 + d(i));
     }
 
     public static void main(String[] args) {
-        new C();
+        new Definitions();
     }
 
     int gcd(int a, int b) {
@@ -33,40 +33,6 @@ public class C {
         if (a == b)
             return a;
         return a > b ? gcd(a - b, b) : gcd(a, b - a);
-    }
-
-    Vector<Integer> div2(int n) {
-        Vector<Integer> v = new Vector<>();
-        rangeClosed(1, (int) sqrt(n))
-                .filter(i -> n % i == 0)
-                .forEach(i -> {
-                            if (n / i == i) {
-                                System.out.print("*");
-                                System.out.printf("%d ", i);
-                            } else {
-                                System.out.printf("%d ", i);
-                                v.add(n / i);
-                            }
-                        }
-                );
-        return v;
-    }
-
-    Vector<Integer> div1(int n) {
-        Vector<Integer> v = new Vector<>();
-        rangeClosed(1, (int) sqrt(n))
-                .filter(i -> n % i == 0)
-                .forEach(i -> {
-                            if (n / i == i) {
-                                System.out.print("*");
-                                System.out.printf("%d ", i);
-                            } else {
-                                System.out.printf("%d ", i);
-                                v.add(n / i);
-                            }
-                        }
-                );
-        return v;
     }
 
     // method to print the divisors
