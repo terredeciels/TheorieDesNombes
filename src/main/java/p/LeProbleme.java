@@ -19,7 +19,7 @@ public class LeProbleme {
     List<Px> X = new ArrayList<>();
 
     //   String chemin = "/home/tdc/IdeaProjects/LesNombres/src/main/java/nombres/";
-    String chemin = "Definitions:\\Users\\gille\\IdeaProjects\\TheorieDesNombes\\src\\main\\java\\p\\";
+    String chemin = "C:\\Users\\gille\\IdeaProjects\\TheorieDesNombes\\src\\main\\java\\p\\";
 
     LeProbleme() throws IOException {
         I.get().forEach(i -> I.get().forEach(j -> {
@@ -30,17 +30,19 @@ public class LeProbleme {
         complete_triangle();
         // System.out.println(format(ltab));
 
-        int[][]  tab = d();
+        int[][] tab = d();
         matriceToTextFile(tab, chemin, "tab_", N);
 
+        int[][] tab2 = dd();
+        matriceToTextFile(tab2, chemin, "tab2_", N);
     }
 
     public static void main(String[] args) throws IOException {
         new LeProbleme();
     }
 
-    void complete_triangle(){
-        I.get().forEach(i -> I.get().forEach(j -> ltab[j][i] =  ltab[i][j]));
+    void complete_triangle() {
+        I.get().forEach(i -> I.get().forEach(j -> ltab[j][i] = ltab[i][j]));
     }
 
     List<Px>[][] f() {
@@ -57,8 +59,14 @@ public class LeProbleme {
     }
 
     int[][] d() {
-        int[][] tab =  new int[M][M];
+        int[][] tab = new int[M][M];
         I.get().forEach(i -> I.get().forEach(j -> tab[i][j] = ltab[i][j].size()));
+        return tab;
+    }
+
+    int[][] dd() {
+        int[][] tab = new int[M][M];
+        I.get().forEach(i -> I.get().forEach(j -> tab[i][j] = Definitions.d(i * j)));
         return tab;
     }
 

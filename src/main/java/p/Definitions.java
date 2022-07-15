@@ -25,7 +25,7 @@ public class Definitions {
         new Definitions();
     }
 
-    int gcd(int a, int b) {
+    static int gcd(int a, int b) {
         if (a == 0)
             return b;
         if (b == 0)
@@ -36,7 +36,7 @@ public class Definitions {
     }
 
     // method to print the divisors
-    Vector<Integer> div(int n) {
+    static Vector<Integer> div(int n) {
         Vector<Integer> v = new Vector<>();
         // Note that this loop runs till square root
         for (int i = 1; i <= sqrt(n); i++) {
@@ -54,7 +54,7 @@ public class Definitions {
     }
 
 
-    int d(int n) {
+    static int d(int n) {
         final int[] cnt = {0};
         rangeClosed(1, (int) sqrt(n))
                 .filter(i -> n % i == 0)
@@ -62,7 +62,7 @@ public class Definitions {
         return cnt[0];
     }
 
-    void printDiv(Vector<Integer> v) {
+    static void printDiv(Vector<Integer> v) {
         for (int i = v.size() - 1; i >= 0; i--)
             System.out.printf("%d ", v.get(i));
     }
