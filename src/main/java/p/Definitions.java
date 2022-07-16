@@ -3,6 +3,7 @@ package p;
 import java.util.Vector;
 
 import static java.lang.Math.sqrt;
+import static java.util.stream.IntStream.range;
 import static java.util.stream.IntStream.rangeClosed;
 
 public class Definitions {
@@ -54,14 +55,16 @@ public class Definitions {
     }
 
 
-    static int d(int n) {
+    static int d2(int n) {
         final int[] cnt = {0};
         rangeClosed(1, (int) sqrt(n))
                 .filter(i -> n % i == 0)
                 .forEach(i -> cnt[0] = n / i == i ? cnt[0] + 1 : cnt[0] + 2);
         return cnt[0];
     }
-
+    static int d(int n) {
+        return (int) range(1, n + 1).filter(i -> n % i == 0).count();
+    }
     static void printDiv(Vector<Integer> v) {
         for (int i = v.size() - 1; i >= 0; i--)
             System.out.printf("%d ", v.get(i));

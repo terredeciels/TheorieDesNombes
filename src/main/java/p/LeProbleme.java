@@ -4,15 +4,17 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
+import static java.lang.System.arraycopy;
 import static java.util.stream.IntStream.range;
 
 public class LeProbleme {
 
-    int N = 32;
+    int N = 128;
     int M = N + 1;
     List<Px>[][] ltab = new ArrayList[M][M];
     Supplier<IntStream> I = () -> IntStream.range(1, M);
@@ -32,13 +34,31 @@ public class LeProbleme {
 
         int[][] tab = d();
         matriceToTextFile(tab, chemin, "tab_", N);
+        int[] valeurs = IntStream.of(to1Dtab(tab)).distinct().sorted().toArray();
+        System.out.println(Arrays.toString(valeurs));
+        int val = 2;
+        int[][] tab1 = equipot(tab, val);
+        matriceToTextFile(tab1, chemin, "tab1_", N);
 
         int[][] tab2 = dd();
         matriceToTextFile(tab2, chemin, "tab2_", N);
+
+        int[][] tab3 = dd2();
+        matriceToTextFile(tab3, chemin, "tab3_", N);
+
+
     }
 
     public static void main(String[] args) throws IOException {
         new LeProbleme();
+    }
+
+    int[][] equipot(int[][] tab, int val) {
+        int[][] t = new int[M][M];
+        I.get().forEach(i -> I.get().forEach(j -> {
+            if (tab[i][j] == val) t[i][j] = 1;
+        }));
+        return t;
     }
 
     void complete_triangle() {
@@ -70,6 +90,12 @@ public class LeProbleme {
         return tab;
     }
 
+    int[][] dd2() {
+        int[][] tab = new int[M][M];
+        I.get().forEach(i -> I.get().forEach(j -> tab[i][j] = Definitions.d(i) * Definitions.d(j)));
+        return tab;
+    }
+
     String format(List<Px>[][] tab) {
         StringBuilder sb = new StringBuilder();
         I.get().forEach(i -> I.get().forEach(j -> {
@@ -82,7 +108,7 @@ public class LeProbleme {
         return sb.toString();
     }
 
-    private void matriceToTextFile(int[][] tab, String fileaddr, String filename, int n) throws IOException {
+    void matriceToTextFile(int[][] tab, String fileaddr, String filename, int n) throws IOException {
         StringBuilder sb = new StringBuilder();
         range(1, n).forEach(i -> {
             range(1, n).forEach(j -> sb.append(tab[i][j]).append(","));
@@ -95,6 +121,12 @@ public class LeProbleme {
         output.flush();
         output.close();
 
+    }
+
+    int[] to1Dtab(int[][] tab2D) {
+        int[] tab1D = new int[M * M];
+        range(1, M).forEach(i -> arraycopy(tab2D[i], 0, tab1D, i * M, M));
+        return tab1D;
     }
 
     record Px(int i, int j, int x) {
