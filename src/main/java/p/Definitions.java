@@ -62,9 +62,11 @@ public class Definitions {
                 .forEach(i -> cnt[0] = n / i == i ? cnt[0] + 1 : cnt[0] + 2);
         return cnt[0];
     }
+
     static int d(int n) {
         return (int) range(1, n + 1).filter(i -> n % i == 0).count();
     }
+
     static void printDiv(Vector<Integer> v) {
         for (int i = v.size() - 1; i >= 0; i--)
             System.out.printf("%d ", v.get(i));
