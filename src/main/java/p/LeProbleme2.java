@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
-import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 import static java.util.stream.IntStream.range;
 
@@ -21,8 +20,8 @@ public class LeProbleme2 {
 
     LeProbleme2() throws IOException {
         int[][] tab = new int[M][M];
-        I.get().forEach(i -> I.get().forEach(j -> tab[i][j] = dbi(i*j)));
-       // I.get().forEach(i -> I.get().forEach(j -> tab[i][j] = (int) pow(dbi(i * j), 2)));
+        I.get().forEach(i -> I.get().forEach(j -> tab[i][j] = dbi(i * j)));
+        // I.get().forEach(i -> I.get().forEach(j -> tab[i][j] = (int) pow(dbi(i * j), 2)));
         matriceToTextFile(tab, chemin, "tabdbi_", N);
     }
 

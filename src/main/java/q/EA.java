@@ -29,7 +29,4 @@ public class EA extends ArrayList<Integer> {
 
     }
 
-//        range(1, M).forEach(k -> range(1, M).forEach(l -> range(1, M).forEach(i -> range(1, M).forEach(j -> {
-//            if (k * l == i * j) tab[i][j]++;
-//        }))));
 }
