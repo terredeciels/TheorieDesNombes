@@ -8,32 +8,21 @@ import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
+import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 import static java.util.stream.IntStream.range;
 
 public class LeProbleme2 {
-    int N = 128;
+    int N = 8;
     int M = N + 1;
     Supplier<IntStream> I = () -> IntStream.range(1, M);
     //   String chemin = "/home/tdc/IdeaProjects/LesNombres/src/main/java/nombres/";
     String chemin = "C:\\Users\\gille\\IdeaProjects\\TheorieDesNombes\\src\\main\\java\\p\\";
 
     LeProbleme2() throws IOException {
-        //printDiv(div(125));
-        // List<Integer> res = div(125);
-        //
-//        int n = 64;
-//        List<Integer> div = div(n);
-//        printDiv(div);
-        //
-        // System.out.println();
-//        List<LeProbleme.Px> bifacteurs = dbi(n);
-//        for (LeProbleme.Px bifatc : bifacteurs)
-//            System.out.println(bifatc);
-        //       System.out.println("d(bifact) = " + bifacteurs.size());
-        //
         int[][] tab = new int[M][M];
-        I.get().forEach(i -> I.get().forEach(j -> tab[i][j] = dbi(i * j)));
+        I.get().forEach(i -> I.get().forEach(j -> tab[i][j] = dbi(i*j)));
+       // I.get().forEach(i -> I.get().forEach(j -> tab[i][j] = (int) pow(dbi(i * j), 2)));
         matriceToTextFile(tab, chemin, "tabdbi_", N);
     }
 
@@ -46,7 +35,8 @@ public class LeProbleme2 {
         List<LeProbleme.Px> bifacteurs = new ArrayList<>();
         for (int d1 : div)
             for (int d2 : div)
-                if (d1 != 1 && d2 != 1 && d1 != n && d2 != n && d1 <= d2 && d1 * d2 == n)
+                //if (d1 != 1 && d2 != 1 && d1 != n && d2 != n && d1 <= d2 && d1 * d2 == n)
+                if (d1 * d2 == n)
                     bifacteurs.add(new LeProbleme.Px(d1, d2, d1 * d2));
         return bifacteurs.size();
     }

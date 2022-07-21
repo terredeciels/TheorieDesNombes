@@ -14,7 +14,7 @@ import static java.util.stream.IntStream.range;
 
 public class LeProbleme {
 
-    int N = 128;
+    int N = 8;
     int M = N + 1;
     List<Px>[][] ltab = new ArrayList[M][M];
     Supplier<IntStream> I = () -> IntStream.range(1, M);
@@ -34,17 +34,17 @@ public class LeProbleme {
 
         int[][] tab = d();
         matriceToTextFile(tab, chemin, "tab_", N);
-        int[] valeurs = IntStream.of(to1Dtab(tab)).distinct().sorted().toArray();
-        System.out.println(Arrays.toString(valeurs));
-        int val = 2;
-        int[][] tab1 = equipot(tab, val);
-        matriceToTextFile(tab1, chemin, "tab1_", N);
-
-        int[][] tab2 = dd();
-        matriceToTextFile(tab2, chemin, "tab2_", N);
-
-        int[][] tab3 = dd2();
-        matriceToTextFile(tab3, chemin, "tab3_", N);
+//        int[] valeurs = IntStream.of(to1Dtab(tab)).distinct().sorted().toArray();
+//        System.out.println(Arrays.toString(valeurs));
+//        int val = 2;
+//        int[][] tab1 = equipot(tab, val);
+//        matriceToTextFile(tab1, chemin, "tab1_", N);
+//
+//        int[][] tab2 = dd();
+//        matriceToTextFile(tab2, chemin, "tab2_", N);
+//
+//        int[][] tab3 = dd2();
+//        matriceToTextFile(tab3, chemin, "tab3_", N);
 
 
     }
@@ -135,4 +135,5 @@ public class LeProbleme {
             return "(" + i + "," + j + ")";
         }
     }
+
 }
