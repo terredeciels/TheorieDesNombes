@@ -1,4 +1,4 @@
-package q;
+package r;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,6 +17,9 @@ class AA extends EA {
         int[][] tab2 = new int[M][M];
         forEach(i -> forEach(j -> tab2[i][j] = lsize(D2(i * j))));
         matriceToTextFile(tab2, chemin, "tab2_", N);
+        int[][] tab3 = new int[M][M];
+        forEach(i -> forEach(j -> tab3[i][j] = getDivisors(i * j).size()));
+        matriceToTextFile(tab3, chemin, "tab3_", N);
     }
 
     public static void main(String[] args) throws IOException {
@@ -38,6 +41,7 @@ class AA extends EA {
                     div.add(i);
                     if (i != n / i) div.add(n / i);
                 });
+        //div = div.stream().filter(i->i<=N).toList();
         return div;
     }
 
