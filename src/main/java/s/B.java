@@ -18,8 +18,6 @@ public class B {
         range(1, N).forEach(i -> setB.add(i));
 
         Set<Integer> I = inter(setA, setB);
-
-
     }
 
     static Set<Integer> setOf(Integer... values) {

@@ -7,7 +7,7 @@ import java.util.List;
 import static java.util.stream.IntStream.iterate;
 import static java.util.stream.IntStream.range;
 
-class AA extends EA {
+public class AA extends EA {
 
     AA() throws IOException {
         range(1, M).forEach(this::add);
