@@ -15,7 +15,7 @@ class AA extends EA {
         int[][] tab = f();
         matriceToTextFile(tab, chemin, "tab_", N);
         int[][] tab2 = new int[M][M];
-        forEach(i -> forEach(j -> tab2[i][j] = lsize(D2(i * j))));
+        forEach(i -> forEach(j -> tab2[i][j] = D2(i * j).size()));
         matriceToTextFile(tab2, chemin, "tab2_", N);
         int[][] tab3 = new int[M][M];
         forEach(i -> forEach(j -> tab3[i][j] = getDivisors(i * j).size()));
@@ -36,12 +36,10 @@ class AA extends EA {
 
     List<Integer> getDivisors(int n) {
         List<Integer> div = new ArrayList<>();
-        iterate(1, i -> i * i <= n, i -> i + 1).filter(i -> n % i == 0)
-                .forEach(i -> {
+        iterate(1, i -> i * i <= n, i -> i + 1).filter(i -> n % i == 0).forEach(i -> {
                     div.add(i);
                     if (i != n / i) div.add(n / i);
                 });
-        //div = div.stream().filter(i->i<=N).toList();
         return div;
     }
 
@@ -54,9 +52,6 @@ class AA extends EA {
         return res;
     }
 
-    int lsize(List L) {
-        return L.size();
-    }
 
     record P(int i, int j) {
         @Override
