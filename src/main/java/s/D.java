@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static java.util.stream.IntStream.range;
 
@@ -25,11 +24,13 @@ public class D {
     D() throws IOException {
         range(1, M).forEach(k -> I.add(k));
         I.forEach(n -> I.forEach(d -> Qm.add(new Q(n, d))));
+
         Qm.forEach(p -> Qm.forEach(q -> Qm.forEach(r -> Qm.forEach(s -> {
-            if (p.x(q).eq(r.x(s))) {
-                tab[p.n][p.d][q.n][q.d]++;
-                f.put(new R((double) (p.n / p.d), (double) (q.n / q.d)), tab[p.n][p.d][q.n][q.d]);
-            }
+            if (p.x(q).eq(r.x(s))) tab[p.n][p.d][q.n][q.d]++;
+        }))));
+        Qm.forEach(p -> Qm.forEach(q -> Qm.forEach(r -> Qm.forEach(s -> {
+                f.put(new R((double) p.n / p.d , (double)q.n / q.d ), tab[p.n][p.d][q.n][q.d]);
+                // System.out.println((double) p.n/p.d);
         }))));
         matriceToTextFile(f, chemin, "f_", N);
     }
