@@ -1,25 +1,34 @@
 package r;
 
+import visualiser.Visu;
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static java.util.stream.IntStream.iterate;
-import static java.util.stream.IntStream.range;
 
 public class AA extends EA {
 
     AA() throws IOException {
-        range(1, M).forEach(this::add);
+//        List<Integer> X = new ArrayList<>();
+//        I.get().forEach(X::add);
+        int[][] f = f();
+        matriceToTextFile(f, chemin, "tab_", N);
 
-        int[][] tab = f();
-        matriceToTextFile(tab, chemin, "tab_", N);
-        int[][] tab2 = new int[M][M];
-        forEach(i -> forEach(j -> tab2[i][j] = D2(i * j).size()));
-        matriceToTextFile(tab2, chemin, "tab2_", N);
-        int[][] tab3 = new int[M][M];
-        forEach(i -> forEach(j -> tab3[i][j] = getDivisors(i * j).size()));
-        matriceToTextFile(tab3, chemin, "tab3_", N);
+/**        int[][] tab2 = new int[M][M];
+ //        forEach(i -> forEach(j -> tab2[i][j] = D2(i * j).size()));
+ //        matriceToTextFile(tab2, chemin, "tab2_", N);
+ //        int[][] tab3 = new int[M][M];
+ //        forEach(i -> forEach(j -> tab3[i][j] = getDivisors(i * j).size()));
+ matriceToTextFile(tab3, chemin, "tab3_", N);
+ **/
+
+        int[] valeurs = IntStream.of(to1Dtab(f)).distinct().sorted().toArray();
+        System.out.println(Arrays.toString(valeurs));
+        new Visu(f, N, valeurs);
     }
 
     public static void main(String[] args) throws IOException {
@@ -28,18 +37,22 @@ public class AA extends EA {
 
     int[][] f() {
         int[][] tab = new int[M][M];
-        forEach(i -> forEach(j -> forEach(k -> forEach(l -> {
-            if (k * l == i * j) tab[i][j]++;
+        I.get().forEach(i -> I.get().forEach(j -> I.get().forEach(k -> I.get().forEach(l -> {
+            if (distinct(i, j, k, l) && k * l == i * j) tab[i][j]++;
         }))));
         return tab;
+    }
+
+    boolean distinct(int i, int j, int k, int l) {
+        return i != k && i != l && j != k && j != l & i != j && k != l;
     }
 
     List<Integer> getDivisors(int n) {
         List<Integer> div = new ArrayList<>();
         iterate(1, i -> i * i <= n, i -> i + 1).filter(i -> n % i == 0).forEach(i -> {
-                    div.add(i);
-                    if (i != n / i) div.add(n / i);
-                });
+            div.add(i);
+            if (i != n / i) div.add(n / i);
+        });
         return div;
     }
 

@@ -23,15 +23,17 @@ public class D {
 
     D() throws IOException {
         range(1, M).forEach(k -> I.add(k));
+
         I.forEach(n -> I.forEach(d -> Qm.add(new Q(n, d))));
 
         Qm.forEach(p -> Qm.forEach(q -> Qm.forEach(r -> Qm.forEach(s -> {
             if (p.x(q).eq(r.x(s))) tab[p.n][p.d][q.n][q.d]++;
         }))));
-        Qm.forEach(p -> Qm.forEach(q -> Qm.forEach(r -> Qm.forEach(s -> {
-                f.put(new R((double) p.n / p.d , (double)q.n / q.d ), tab[p.n][p.d][q.n][q.d]);
-                // System.out.println((double) p.n/p.d);
-        }))));
+
+        Qm.forEach(p -> Qm.forEach(q -> f
+                .put(new R((double) p.n / p.d , (double)q.n / q.d ),
+                        tab[p.n][p.d][q.n][q.d])));
+
         matriceToTextFile(f, chemin, "f_", N);
     }
 
