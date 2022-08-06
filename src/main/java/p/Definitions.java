@@ -18,8 +18,7 @@ public class Definitions {
 //        int a = 98, b = 56;
 //        System.out.println("GCD of " + a + " and " + b + " is " + gcd(a, b));
 
-        System.out.println("d(" + i + ") = "
-                + d(i));
+        System.out.println("d(" + i + ") = " + d(i));
     }
 
     public static void main(String[] args) {

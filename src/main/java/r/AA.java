@@ -16,15 +16,15 @@ public class AA extends EA {
 //        List<Integer> X = new ArrayList<>();
 //        I.get().forEach(X::add);
         int[][] f = f();
-        matriceToTextFile(f, chemin, "tab_", N);
+        matriceToTextFile(f, chemin, "tab2_", N);
 
-/**        int[][] tab2 = new int[M][M];
- //        forEach(i -> forEach(j -> tab2[i][j] = D2(i * j).size()));
- //        matriceToTextFile(tab2, chemin, "tab2_", N);
- //        int[][] tab3 = new int[M][M];
- //        forEach(i -> forEach(j -> tab3[i][j] = getDivisors(i * j).size()));
- matriceToTextFile(tab3, chemin, "tab3_", N);
- **/
+//        int[][] tab2 = new int[M][M];
+//        I.get().forEach(i -> I.get().forEach(j -> tab2[i][j] = D2(i * j).size()));
+//        matriceToTextFile(tab2, chemin, "tab2_", N);
+//        int[][] tab3 = new int[M][M];
+//        I.get().forEach(i -> I.get().forEach(j -> tab3[i][j] = getDivisors(i * j).size()));
+//        matriceToTextFile(tab3, chemin, "tab3_", N);
+
 
         int[] valeurs = IntStream.of(to1Dtab(f)).distinct().sorted().toArray();
         System.out.println(Arrays.toString(valeurs));
@@ -39,6 +39,7 @@ public class AA extends EA {
         int[][] tab = new int[M][M];
         I.get().forEach(i -> I.get().forEach(j -> I.get().forEach(k -> I.get().forEach(l -> {
             if (distinct(i, j, k, l) && k * l == i * j) tab[i][j]++;
+            // if ( k * l == i * j) tab[i][j]++;
         }))));
         return tab;
     }
