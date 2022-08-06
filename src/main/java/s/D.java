@@ -31,7 +31,7 @@ public class D {
         }))));
 
         Qm.forEach(p -> Qm.forEach(q -> f
-                .put(new R((double) p.n / p.d , (double)q.n / q.d ),
+                .put(new R((double) p.n / p.d, (double) q.n / q.d),
                         tab[p.n][p.d][q.n][q.d])));
 
         matriceToTextFile(f, chemin, "f_", N);

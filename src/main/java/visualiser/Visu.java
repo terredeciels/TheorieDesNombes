@@ -39,7 +39,7 @@ public class Visu extends Canvas {
                 if (tab[x][y] == 6) {
                     g.setColor(NOIR);
                     g.drawRect(X, Y, taille, taille);
-                   g.fillRect(X, Y, taille, taille);
+                    g.fillRect(X, Y, taille, taille);
                 }
 
                 //g.setColor(new Color((int)(pow(2,6))*mat[x][y]));
@@ -90,7 +90,7 @@ public class Visu extends Canvas {
 
     public Visu(int[][] matrice, int n, int[] valeurs) {
         Valeurs = valeurs;
-        N = n -1;
+        N = n - 1;
         tab = matrice;
         JFrame frame = new JFrame();
         frame.setSize(WIDTH, HEIGHT);
@@ -108,7 +108,7 @@ public class Visu extends Canvas {
     public void paint(Graphics g) {
         super.paint(g);
         this.g = g;
-        range(1, N).forEach(i-> rangeClosed(1, N).forEach(j-> F.accept(i, j)));
+        range(1, N).forEach(i -> rangeClosed(1, N).forEach(j -> F.accept(i, j)));
 
     }
 

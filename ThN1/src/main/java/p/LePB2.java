@@ -6,7 +6,7 @@ import java.util.List;
 
 import static java.lang.Math.sqrt;
 
-public class LePB2 extends ELePB{
+public class LePB2 extends ELePB {
 
     LePB2() throws IOException {
         I.get().forEach(i -> I.get().forEach(j -> tab[i][j] = d(i * j)));

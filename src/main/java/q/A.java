@@ -13,7 +13,7 @@ import static java.util.stream.IntStream.range;
 
 class A extends ArrayList<Integer> {
     //   String chemin = "/home/tdc/IdeaProjects/LesNombres/src/main/java/nombres/";
-    public String chemin = "C:\\Users\\gille\\IdeaProjects\\TheorieDesNombes\\src\\main\\java\\r\\";
+    public String chemin = "C:\\Users\\gille\\IdeaProjects\\TheorieDesNombes\\src\\main\\java\\q\\";
     int N = 128;
     public Supplier<IntStream> I = () -> range(1, N);
     int M = N + 1;

@@ -11,12 +11,12 @@ import static java.lang.System.arraycopy;
 import static java.util.stream.IntStream.range;
 
 public class ELePB {
-    int N = 8;
+    int N = 128;
     int M = N + 1;
     Supplier<IntStream> I = () -> IntStream.range(1, M);
+    int[][] tab = new int[M][M];
     //   String chemin = "/home/tdc/IdeaProjects/LesNombres/src/main/java/nombres/";
-    String chemin = "C:\\Users\\gille\\IdeaProjects\\TheorieDesNombes\\src\\main\\java\\p\\";
-    int[][] tab= new int[M][M];
+    String chemin = "C:\\Users\\gille\\IdeaProjects\\TheorieDesNombes\\ThN1\\src\\main\\java\\p\\";
 
     void matriceToTextFile(int[][] tab, String fileaddr, String filename, int n) throws IOException {
         StringBuilder sb = new StringBuilder();
@@ -40,14 +40,14 @@ public class ELePB {
     }
 
     int gcd(int a, int b) {
-       if (a == 0)
-           return b;
-       if (b == 0)
-           return a;
-       if (a == b)
-           return a;
-       return a > b ? gcd(a - b, b) : gcd(a, b - a);
-   }
+        if (a == 0)
+            return b;
+        if (b == 0)
+            return a;
+        if (a == b)
+            return a;
+        return a > b ? gcd(a - b, b) : gcd(a, b - a);
+    }
 
     String format(List<LePB1.Px>[][] tab) {
         StringBuilder sb = new StringBuilder();
