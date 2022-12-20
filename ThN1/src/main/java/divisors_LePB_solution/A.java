@@ -23,12 +23,19 @@ class A extends EA {
         int[][] tab2 = new int[M][M];
         forEach(i -> forEach(j -> tab2[i][j] = D2(i * j).size()));
         matriceToTextFile(tab2, chemin, "tab2_", N);
-        int[] _1Dtab = to1Dtab(tab2);Map<Integer, Integer> map=new HashMap<>();
-        System.out.println(_1Dtab.length);
-        for (int k = 1; k < N * N; k++) {
-            map.put(k,_1Dtab[k]);
-        }
-        fonctionToTextFile(map,chemin,"ftab_",N);
+
+        final int[] S = {0};
+        forEach(i -> forEach(j -> S[0] += tab2[i][j] - tab[i][j]));
+        if (S[0]==0) System.out.println("tab==tab2");
+        else System.out.println("tab <> tab2");
+
+//        int[] _1Dtab = to1Dtab(tab2);
+//        Map<Integer, Integer> map=new HashMap<>();
+//        System.out.println(_1Dtab.length);
+//        for (int k = 1; k < N * N; k++) {
+//            map.put(k,_1Dtab[k]);
+//        }
+//        fonctionToTextFile(map,chemin,"ftab_",N);
     }
 
     public static void main(String[] args) throws IOException {
